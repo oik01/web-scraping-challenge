@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MARS Website</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p>Two more homeworks to go!! WooHoo! </p>
+      <p>Didn't have time to make the site pretty but the code works. It scrapes the data, uploads to mongo, then downloads and shows everything including the table. </p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">scrape new data!!</a></p>
+    </div>
+    <h2>The Latest Mars News</h2>
+    <h3>{{ Content['NASA_Website_Data']['Title']}}</h3>
+    <p>{{ Content['NASA_Website_Data']['Text_body']}}</p>
+    <h4>Featured Mars Image</h4>
+    <img src="{{ Content["Image_URL"] }}" alt="featured image">
+    <h2>Latest Current Wheather on Mars Tweet:</h2>
+    <h4>{{ Content["first_tweet"] }}</h4>
+    <h3>MARS Hemispheres </h3>
+    <img src="{{ Content["Hemisphere_Image_URL"][0]['img_url'] }}" alt="featured image">
+    <h3>{{ Content["Hemisphere_Image_URL"][0]['title'] }} </h3>
+    <img src="{{ Content["Hemisphere_Image_URL"][1]['img_url'] }}" alt="featured image">
+    <h3>{{ Content["Hemisphere_Image_URL"][1]['title'] }} </h3>
+    <img src="{{ Content["Hemisphere_Image_URL"][2]['img_url'] }}" alt="featured image">
+    <h3>{{ Content["Hemisphere_Image_URL"][2]['title'] }} </h3>
+    <img src="{{ Content["Hemisphere_Image_URL"][3]['img_url'] }}" alt="featured image">
+    <h3>{{ Content["Hemisphere_Image_URL"][3]['title'] }} </h3>
+  </div>
+  </div>
+  {% block content %}
+  <h1>Table</h1>
+  {{data | safe}}
+  {% endblock %}
+  
+</body>
+
+</html>
